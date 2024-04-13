@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364093614776",
+    "project_id": "ta-na-mesa-89fec",
+    "storage_bucket": "ta-na-mesa-89fec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364093614776:android:8ed71973d8800848bc624d",
+        "android_client_info": {
+          "package_name": "com.example.garcom_do_ta_na_mesa.garcom_do_ta_na_mesa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVkiQ0VPFw7P-EU2pFRRXcwPtHBdTdRtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
