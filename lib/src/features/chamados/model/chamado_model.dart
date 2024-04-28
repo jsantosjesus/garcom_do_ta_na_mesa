@@ -16,7 +16,7 @@ class ChamadoModel {
   );
 
   factory ChamadoModel.fromJson(Map json) {
-    return ChamadoModel(json['estabelecimentoId'], json['hora'], json['mesaId'],
-        json['mesaNumero'], json['status'], json['tipo']);
+    return ChamadoModel(json['estabelecimentoId'], json['hora'],
+        json['mesa.id'], json['mesa.numero'], json['status'], json['tipo']);
   }
 }

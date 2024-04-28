@@ -1,4 +1,7 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+// import 'package:garcom_do_ta_na_mesa/src/features/chamados/controller/get_chamados_controller.dart';
+// import 'package:garcom_do_ta_na_mesa/src/features/chamados/service/get_chamados_firebase_service.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/model/user_model.dart';
 // import 'package:garcom_do_ta_na_mesa/src/controller/home_controller.dart';
 // import 'package:garcom_do_ta_na_mesa/src/repository/home_repository_mock.dart';
@@ -15,6 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   UserModel userModel =
       UserModel(uid: "", nome: "", estabelecimentoId: "", cargo: "");
+
+  // final GetChamadosController _getChamadosController = GetChamadosController();
 
   @override
   void initState() {
@@ -49,7 +54,10 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
-          children: [const Text('homePage'), Text(userModel.nome)],
+          children: [
+            const Text('homePage'),
+            Text(userModel.nome),
+          ],
         ),
       ),
 
