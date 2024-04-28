@@ -18,4 +18,10 @@ class GetMessageFirebaseToken {
       print('Erro ao buscar o token');
     }
   }
+
+  setNullTokenMessage(String uid) async {
+    final data = {"tokenMessage": ""};
+
+    await db.collection("usuario").doc(uid).set(data, SetOptions(merge: true));
+  }
 }

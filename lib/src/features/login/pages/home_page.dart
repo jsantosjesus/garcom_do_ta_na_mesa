@@ -1,5 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/login/controller/logout_controller.dart';
 // import 'package:garcom_do_ta_na_mesa/src/features/chamados/controller/get_chamados_controller.dart';
 // import 'package:garcom_do_ta_na_mesa/src/features/chamados/service/get_chamados_firebase_service.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/model/user_model.dart';
@@ -18,6 +19,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   UserModel userModel =
       UserModel(uid: "", nome: "", estabelecimentoId: "", cargo: "");
+
+  final LogoutController _logoutController = LogoutController();
 
   // final GetChamadosController _getChamadosController = GetChamadosController();
 
@@ -44,10 +47,10 @@ class _HomePageState extends State<HomePage> {
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text("Logout"),
-            onTap: () {
-              PrefsService.logout();
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/login', (_) => true);
+            onTap: () async {
+              await _logoutController.logout(userModel.uid).then((value) =>
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/login', (_) => true));
             },
           )
         ]),
