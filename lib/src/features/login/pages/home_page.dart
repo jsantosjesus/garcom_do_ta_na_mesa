@@ -7,6 +7,8 @@ import 'package:garcom_do_ta_na_mesa/src/features/login/model/user_model.dart';
 // import 'package:garcom_do_ta_na_mesa/src/controller/home_controller.dart';
 // import 'package:garcom_do_ta_na_mesa/src/repository/home_repository_mock.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/services/prefs_service.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/pushNotifications/service/notification_service.dart';
+import 'package:provider/provider.dart';
 // import 'package:garcom_do_ta_na_mesa/src/model/user_model.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,6 +62,19 @@ class _HomePageState extends State<HomePage> {
           children: [
             const Text('homePage'),
             Text(userModel.nome),
+            ElevatedButton(
+                onPressed: () {
+                  Provider.of<NotificationService>(context, listen: false)
+                      .showNotification(CustomNotification(
+                    id: 2,
+                    title: "teste 03",
+                    body: "Isso é um teste!",
+                    // payload: "payload"
+                  ));
+                  // NotificationService().showNotification(CustomNotification(
+                  //     id: 1, title: "teste 02", body: "Isso é um teste!"));
+                },
+                child: const Text("teste notificação"))
           ],
         ),
       ),
