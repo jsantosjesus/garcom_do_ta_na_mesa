@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:garcom_do_ta_na_mesa/errors/error_exception.dart';
 
-class AuthFirebaseService {
+class AuthFirebase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<String> logarUsuario(
@@ -21,9 +21,5 @@ class AuthFirebaseService {
       throw DatasourceError(message: e.code);
       // }
     }
-  }
-
-  Future<void> logoutUsuario() {
-    return _firebaseAuth.signOut();
   }
 }

@@ -5,7 +5,6 @@ import 'package:garcom_do_ta_na_mesa/src/features/login/services/get_firestore_u
 import 'package:garcom_do_ta_na_mesa/src/features/login/services/get_message_firebase_token.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/services/prefs_service.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/state/state_login.dart';
-// import 'package:garcom_do_ta_na_mesa/src_not_used/models/user.dart';
 
 class LoginController {
   ValueNotifier<bool> inLoader = ValueNotifier<bool>(false);
@@ -29,17 +28,17 @@ class LoginController {
           email: _email!, password: _password!);
 
       if (auth != null) {
-        final _firebaseUserService = GetFirestoreUserService();
+        final firebaseUserService = GetFirestoreUserService();
 
-        UserModel? usuario = await _firebaseUserService.getUserAuth(auth);
+        UserModel? usuario = await firebaseUserService.getUserAuth(auth);
 
         if (usuario != null) {
-          final _getMessageFirebaseToken = GetMessageFirebaseToken();
+          final getMessageFirebaseToken = GetMessageFirebaseToken();
 
-          await _getMessageFirebaseToken.getDeviceFirebaseToken(usuario.uid);
+          await getMessageFirebaseToken.getDeviceFirebaseToken(usuario.uid);
 
           PrefsService.save(usuario);
-          print(usuario);
+          // print(usuario);
           inLoader.value = false;
           return SucessLoginState();
         }

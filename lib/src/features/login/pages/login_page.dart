@@ -1,67 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/login/controller/login_controller.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/login/pages/components/input_decoration.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/login/pages/components/snack.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/login/state/state_login.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/login/pages/components/login_component.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/login/repository/auth_repository.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/login/store/auth_store.dart';
+import 'package:go_router/go_router.dart';
 
-// ignore: must_be_immutable
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
-  LoginController _controller = LoginController();
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final AuthStore store = AuthStore(repository: AuthRepositoryImpl());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ValueListenableBuilder<bool>(
-        valueListenable: _controller.inLoader,
-        builder: (_, inLoader, __) => inLoader == true
-            ? const Center(
-                child: CircularProgressIndicator(
-                  color: Color(0xFFFF881F),
-                ),
-              )
-            : Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Form(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      TextFormField(
-                        // controller: _emailController,
-                        onChanged: _controller.setEmail,
-                        decoration: getInputDecoration("E-mail"),
-                      ),
-                      TextFormField(
-                        // controller: _passwordController,
-                        onChanged: _controller.setPassword,
-                        decoration: getInputDecoration("Senha"),
-                        obscureText: true,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _controller.auth().then((result) {
-                            if (result is SucessLoginState) {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/home');
-                            } else {
-                              showSnackBar(
-                                  context: context,
-                                  mesage: 'aconteceu um erro');
-                            }
-                          });
-                        },
-                        child: Text('Entrar'),
-                        style: ElevatedButton.styleFrom(
-                            primary: const Color(0xFFFF881F),
-                            onPrimary: Colors.white),
-                      ),
-                    ],
+      body: Center(
+        child: AnimatedBuilder(
+          animation: Listenable.merge([
+            store.initialState,
+            store.isLoading,
+            store.success,
+            store.error,
+          ]),
+          builder: ((context, child) {
+            if (store.initialState.value) {
+              return LoginComponent(
+                login: (String email, String password) {
+                  store.login(email: email, password: password);
+                },
+              );
+            } else if (store.isLoading.value) {
+              return Container(
+                color: const Color(0xFFFF881F),
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
                   ),
                 ),
-              ),
+              );
+            } else if (store.error.value.isNotEmpty) {
+              return LoginComponent(login: (String email, String password) {
+                store.login(email: email, password: password);
+              });
+            } else {
+              final uid = store.success.value;
+              Future.delayed(Duration.zero, () {
+                context.go('/home/$uid');
+              });
+              return Container();
+            }
+          }),
+        ),
       ),
     );
   }

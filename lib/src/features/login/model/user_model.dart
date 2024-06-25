@@ -56,7 +56,7 @@ class UserModel {
     List<String> parts =
         userString.replaceAll('UserModel{', '').replaceAll('}', '').split(', ');
 
-    // Extrai os valores de nome e idade
+    // Extrai os valores
     String uid = parts[0].split(': ')[1];
     String nome = parts[1].split(': ')[1];
     String estabelecimentoId = parts[2].split(': ')[1];
