@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/routes.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/pushNotifications/service/firebase_messaging_service.dart';
-import 'package:garcom_do_ta_na_mesa/src/features/pushNotifications/service/notification_service.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/pushNotifications/service/firebase_messaging_service.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/pushNotifications/service/notification_service.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatefulWidget {
