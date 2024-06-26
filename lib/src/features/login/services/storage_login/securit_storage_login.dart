@@ -29,9 +29,8 @@ class SecuritStorageLogin implements IStorageLogin {
   }
 
   @override
-  Future removeEmailAndPassword() {
-    // TODO: implement removeEmailAndPassword
-    throw UnimplementedError();
+  Future removeEmailAndPassword() async {
+    await _secureStorage.delete(key: _key);
   }
 
   @override

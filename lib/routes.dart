@@ -1,4 +1,4 @@
-import 'package:garcom_do_ta_na_mesa/src/features/login/pages/home_page.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/home/home_page.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/pages/login_page.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/pages/splash_page.dart';
 import 'package:go_router/go_router.dart';
