@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/pages/components/login_component.dart';
+import 'package:garcom_do_ta_na_mesa/src/features/login/pages/components/snack.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/repository/auth_repository.dart';
 import 'package:garcom_do_ta_na_mesa/src/features/login/store/auth_store.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -42,14 +43,27 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               );
             } else if (store.error.value.isNotEmpty) {
-              return LoginComponent(login: (String email, String password) {
-                store.login(email: email, password: password);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showSnackBar(
+                  context: context,
+                  mesage: store.error.value,
+                  isError: true,
+                );
+                store.error.value = '';
+                store.initialState.value = true;
               });
+
+              return LoginComponent(
+                login: (String email, String password) {
+                  store.login(email: email, password: password);
+                },
+              );
             } else {
               final uid = store.success.value;
-              Future.delayed(Duration.zero, () {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.go('/home/$uid');
               });
+
               return Container();
             }
           }),
