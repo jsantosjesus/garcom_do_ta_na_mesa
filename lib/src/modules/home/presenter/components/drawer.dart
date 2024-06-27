@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/store/get_user_store.dart';
 import 'package:get_it/get_it.dart';
 

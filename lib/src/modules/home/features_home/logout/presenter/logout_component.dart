@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/logout/presenter/store/logout_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/securit_storage_login.dart';
 import 'package:go_router/go_router.dart';

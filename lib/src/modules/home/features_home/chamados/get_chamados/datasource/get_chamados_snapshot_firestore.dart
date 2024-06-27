@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:garcom_do_ta_na_mesa/src/response_models/response_model_firestore.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/response_models/response_model_firestore.dart';
 
 class GetChamadosSnapshotFirestore {
   final FirebaseFirestore db = FirebaseFirestore.instance;

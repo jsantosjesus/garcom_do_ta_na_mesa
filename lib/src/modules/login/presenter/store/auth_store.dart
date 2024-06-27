@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:garcom_do_ta_na_mesa/src/errors/error_exception.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/repository/auth_repository.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/get_message_firebase_token.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/contract/login_params_model.dart';

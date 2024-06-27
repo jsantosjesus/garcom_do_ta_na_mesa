@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/model/chamado_model.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/building_title.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/presenter/store/set_chamado_check_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/repository/set_chamado_check_repository.dart';
-import 'package:garcom_do_ta_na_mesa/src/components_ui_global/snack.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/components_ui_global/snack.dart';
 // import 'package:go_router/go_router.dart';
 
 class ChamadoModal extends StatefulWidget {

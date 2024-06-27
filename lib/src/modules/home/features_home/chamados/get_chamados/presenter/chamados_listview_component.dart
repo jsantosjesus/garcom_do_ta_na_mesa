@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/get_chamados/presenter/store/chamados_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/build_date.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/building_title.dart';

@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:garcom_do_ta_na_mesa/src/errors/error_exception.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 
 class AuthFirebase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

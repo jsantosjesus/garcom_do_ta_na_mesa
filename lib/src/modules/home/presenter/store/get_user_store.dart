@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:garcom_do_ta_na_mesa/src/errors/error_exception.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/model/user_model.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/repository/get_user_repository.dart';
 

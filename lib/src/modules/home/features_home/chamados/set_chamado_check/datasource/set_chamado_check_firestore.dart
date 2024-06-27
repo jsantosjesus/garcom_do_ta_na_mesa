@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:garcom_do_ta_na_mesa/src/errors/error_exception.dart';
+import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 
 class SetChamadoCheckFirestore {
   final FirebaseFirestore db = FirebaseFirestore.instance;
