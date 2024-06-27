@@ -1,4 +1,4 @@
-import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/datasource/get_chamados_snapshot_firestore.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/get_chamados/datasource/get_chamados_snapshot_firestore.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/model/chamado_model.dart';
 
 class GetChamadosStreamRepository {

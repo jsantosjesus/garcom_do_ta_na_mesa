@@ -5,7 +5,10 @@ class GetChamadosSnapshotFirestore {
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   Stream<List<ResponseModelFiresore>> listenToChamados({required String uid}) {
-    final docRef = db.collection("chamado").where('garcom_id', isEqualTo: uid);
+    final docRef = db
+        .collection("chamado")
+        .where('garcom_id', isEqualTo: uid)
+        .where('status', isEqualTo: 'ATIVO');
 
     return docRef.snapshots().map((snapshot) {
       return snapshot.docs

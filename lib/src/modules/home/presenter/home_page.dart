@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/presenter/chamados_listview_component.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/get_chamados/presenter/chamados_listview_component.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/components/drawer.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/logout/presenter/logout_component.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/store/get_user_store.dart';

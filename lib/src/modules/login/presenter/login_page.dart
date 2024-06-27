@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/components/login_component.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/components/snack.dart';
+import 'package:garcom_do_ta_na_mesa/src/components_ui_global/snack.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/repository/auth_repository.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/auth_store.dart';
 import 'package:go_router/go_router.dart';

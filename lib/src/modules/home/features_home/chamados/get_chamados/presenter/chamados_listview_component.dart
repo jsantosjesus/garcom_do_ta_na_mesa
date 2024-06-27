@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/presenter/store/chamados_store.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/presenter/utils/building_title.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/get_chamados/presenter/store/chamados_store.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/building_title.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/presenter/chamado_modal.dart';
 
 class ChamadosListviewComponent extends StatefulWidget {
   final String uid;
@@ -51,6 +52,16 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
                             ),
                           ),
                           title: Text(titleChamado),
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return ChamadoModal(
+                                  chamado: chamado,
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                       const Divider(
