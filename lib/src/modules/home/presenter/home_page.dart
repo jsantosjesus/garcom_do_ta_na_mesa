@@ -3,6 +3,8 @@ import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart'
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/presenter/chamados_listview_component.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/components/drawer.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/logout/presenter/logout_component.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/store/get_user_store.dart';
+import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
   final String uid;
@@ -13,10 +15,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GetUserStore userStore = GetIt.I<GetUserStore>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    userStore.getUser(uid: widget.uid);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MyDrawer(nome: 'Jadson'),
+      drawer: MyDrawer(
+        uid: widget.uid,
+      ),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: textColor01),
         centerTitle: true,
@@ -29,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           LogoutComponent(uid: widget.uid),
         ],
       ),
-      body: const ChamadosListviewComponent(),
+      body: ChamadosListviewComponent(uid: widget.uid),
     );
   }
 }

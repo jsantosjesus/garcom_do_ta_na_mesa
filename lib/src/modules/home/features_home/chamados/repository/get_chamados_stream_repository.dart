@@ -5,8 +5,8 @@ class GetChamadosStreamRepository {
   final GetChamadosSnapshotFirestore datasource =
       GetChamadosSnapshotFirestore();
 
-  Stream<List<ChamadoModel>> getChamados() {
-    return datasource.listenToChamados().map((data) {
+  Stream<List<ChamadoModel>> getChamados({required String uid}) {
+    return datasource.listenToChamados(uid: uid).map((data) {
       return data
           .map((item) => ChamadoModel.fromMap(map: item.data, id: item.id))
           .toList();

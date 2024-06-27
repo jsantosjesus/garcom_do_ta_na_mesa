@@ -10,11 +10,9 @@ class ChamadosStore {
 
   final GetChamadosStreamRepository repository = GetChamadosStreamRepository();
 
-  void listenToContacts() {
-    print('comeca aqui');
-    repository.getChamados().listen((contacts) {
-      success.value = contacts;
-      print(success.value[0].status);
+  void listenToChamados({required String uid}) {
+    repository.getChamados(uid: uid).listen((chamados) {
+      success.value = chamados;
       isLoading.value = false;
     });
   }

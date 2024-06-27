@@ -4,7 +4,8 @@ import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/pre
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/presenter/utils/building_title.dart';
 
 class ChamadosListviewComponent extends StatefulWidget {
-  const ChamadosListviewComponent({super.key});
+  final String uid;
+  const ChamadosListviewComponent({super.key, required this.uid});
 
   @override
   State<ChamadosListviewComponent> createState() =>
@@ -18,7 +19,7 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
   void initState() {
     super.initState();
 
-    store.listenToContacts();
+    store.listenToChamados(uid: widget.uid);
   }
 
   @override
@@ -27,7 +28,7 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
         animation: Listenable.merge([store.isLoading, store.success]),
         builder: ((context, child) {
           if (store.isLoading.value) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           } else if (store.success.value.isNotEmpty) {
             return ListView.builder(
                 itemCount: store.success.value.length,
