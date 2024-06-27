@@ -8,7 +8,8 @@ class GetChamadosSnapshotFirestore {
     final docRef = db
         .collection("chamado")
         .where('garcom_id', isEqualTo: uid)
-        .where('status', isEqualTo: 'ATIVO');
+        .where('status', isEqualTo: 'ATIVO')
+        .orderBy('hora', descending: true);
 
     return docRef.snapshots().map((snapshot) {
       return snapshot.docs

@@ -24,14 +24,10 @@ class BuildDate {
     if (!wastoDay) {
       return '${date.day}/${date.month}/${date.year} às ${date.hour}:${date.minute}';
     } else if (!wasNow) {
-      print('hora agora: ${now.value.hour}');
-      print('hora do date: ${date.hour}');
-      print('diferenca de hora: $differenceInHours');
-      print('minutos date: ${date.minute}');
-      print('minutos agora: ${now.value.minute}');
       final int time =
           ((differenceInHours * 60) - date.minute) + now.value.minute;
-      return 'à $time minutos';
+      final String plural = time > 1 ? 'minutos' : 'minuto';
+      return 'à $time $plural';
     } else {
       return 'Agora';
     }
