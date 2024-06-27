@@ -70,7 +70,7 @@ class _ChamadoModalState extends State<ChamadoModal> {
                     ),
                   );
                 } else if (store.isLoading.value) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 } else if (store.error.value.isNotEmpty) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showSnackBar(

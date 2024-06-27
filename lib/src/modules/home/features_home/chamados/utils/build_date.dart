@@ -24,6 +24,7 @@ class BuildDate {
     if (!wastoDay) {
       return '${date.day}/${date.month}/${date.year} às ${date.hour}:${date.minute}';
     } else if (!wasNow) {
+      // print('hora date: ${date.hour}');
       final int time =
           ((differenceInHours * 60) - date.minute) + now.value.minute;
       final String plural = time > 1 ? 'minutos' : 'minuto';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/store/get_user_store.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 class MyDrawer extends StatefulWidget {
   final String uid;
@@ -50,19 +51,17 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Chamados'),
-            onTap: () {},
+            onTap: () {
+              context.go('/home/${widget.uid}');
+            },
           ),
           ListTile(
             leading: const Icon(Icons.table_bar),
             title: const Text('Mesas'),
-            onTap: () {},
+            onTap: () {
+              context.go('/mesas/${widget.uid}');
+            },
           ),
-          // ListTile(
-          //   leading: Icon(Icons.logout),
-          //   title: Text('Logout'),
-          //   onTap: () {
-          //   },
-          // ),
         ],
       ),
     );
