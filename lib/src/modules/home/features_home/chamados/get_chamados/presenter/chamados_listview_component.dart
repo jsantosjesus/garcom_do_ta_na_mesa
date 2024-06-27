@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/get_chamados/presenter/store/chamados_store.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/build_date.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/utils/building_title.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/presenter/chamado_modal.dart';
 
@@ -16,17 +17,22 @@ class ChamadosListviewComponent extends StatefulWidget {
 class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
   final ChamadosStore store = ChamadosStore();
 
+  final BuildDate buildDate = BuildDate();
+
   @override
   void initState() {
     super.initState();
 
     store.listenToChamados(uid: widget.uid);
+
+    buildDate.startTimer();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: Listenable.merge([store.isLoading, store.success]),
+        animation:
+            Listenable.merge([store.isLoading, store.success, buildDate.now]),
         builder: ((context, child) {
           if (store.isLoading.value) {
             return const Center(child: CircularProgressIndicator());
@@ -37,6 +43,8 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
                   final chamado = store.success.value[id];
                   final String titleChamado =
                       buildTitle(tipo: chamado.tipo, mesa: chamado.numeroMesa);
+                  final String subtitleChamado =
+                      buildDate.buildDate(date: chamado.hora);
                   return Column(
                     children: [
                       Padding(
@@ -52,6 +60,7 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
                             ),
                           ),
                           title: Text(titleChamado),
+                          subtitle: Text(subtitleChamado),
                           onTap: () {
                             showModalBottomSheet(
                               context: context,
