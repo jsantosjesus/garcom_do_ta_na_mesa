@@ -58,7 +58,8 @@ class _MesasPageState extends State<MesasPage> {
                       onTap: () {
                         if (mesa.contaId != null) {
                           final String contaId = mesa.contaId!;
-                          context.push('/conta/$contaId');
+                          context.push(
+                              '/conta/$contaId/${mesa.numero}/${mesa.uid}');
                         } else {
                           showSnackBar(
                               context: context,

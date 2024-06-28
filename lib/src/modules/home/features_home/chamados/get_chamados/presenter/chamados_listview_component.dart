@@ -55,7 +55,9 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
                             child: Icon(
                               chamado.tipo == 'pedidoPronto'
                                   ? Icons.restaurant
-                                  : Icons.notifications,
+                                  : chamado.tipo == 'conta'
+                                      ? Icons.receipt
+                                      : Icons.notifications,
                               color: textColor01,
                             ),
                           ),

@@ -27,8 +27,10 @@ final routes = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: '/conta/:mesaId',
+    path: '/conta/:contaId/:mesaNumero/:mesaId',
     builder: (context, state) => ContaPage(
+      contaId: state.pathParameters['contaId']!,
+      mesaNumero: state.pathParameters['mesaNumero']!,
       mesaId: state.pathParameters['mesaId']!,
     ),
   )
