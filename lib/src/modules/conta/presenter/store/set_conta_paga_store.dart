@@ -27,17 +27,24 @@ class SetContaPagaStore {
 
   Future setContaPaga({required String contaId, required String mesaId}) async {
     confirm.value = false;
+    isLoading.value = true;
 
     try {
       final result =
           await repository.setContaPaga(contaId: contaId, mesaId: mesaId);
 
+      // print('result em store: $result');
+
       success.value = result;
+
+      // print('success em store: ${success.value}');
     } on DatasourceError catch (e) {
       error.value = e.message;
     } catch (e) {
       print(e);
       error.value = 'Ops, Aconteceu um erro';
     }
+
+    isLoading.value = false;
   }
 }

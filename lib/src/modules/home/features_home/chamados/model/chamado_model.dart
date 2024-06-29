@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ChamadoModel {
   final String uid;
   final DateTime hora;
+  final String mesaId;
   final int numeroMesa;
   final String tipo;
   final String status;
@@ -10,6 +11,7 @@ class ChamadoModel {
   ChamadoModel(
       {required this.uid,
       required this.hora,
+      required this.mesaId,
       required this.numeroMesa,
       required this.tipo,
       required this.status});
@@ -23,6 +25,7 @@ class ChamadoModel {
     return ChamadoModel(
       uid: id,
       hora: horaAjustada,
+      mesaId: mesa['id'],
       numeroMesa: mesa['numero'] as int,
       tipo: map['tipo'] as String,
       status: map['status'] as String,

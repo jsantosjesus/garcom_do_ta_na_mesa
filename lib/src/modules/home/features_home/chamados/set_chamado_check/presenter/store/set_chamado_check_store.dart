@@ -11,16 +11,18 @@ class SetChamadoCheckStore {
 
   final ValueNotifier<bool> success = ValueNotifier<bool>(false);
 
-  final ISetChamadoCheckRepository repossitory;
+  final ISetChamadoCheckRepository repository;
 
-  SetChamadoCheckStore({required this.repossitory});
+  SetChamadoCheckStore({required this.repository});
 
-  Future setChamadoCheck({required String chamadoId}) async {
+  Future setChamadoCheck(
+      {required String chamadoId, required String mesaId}) async {
     initialState.value = false;
     isLoading.value = true;
 
     try {
-      final result = await repossitory.setChamadoCheck(chamadoId: chamadoId);
+      final result = await repository.setChamadoCheck(
+          chamadoId: chamadoId, mesaId: mesaId);
 
       success.value = result;
     } on DatasourceError catch (e) {

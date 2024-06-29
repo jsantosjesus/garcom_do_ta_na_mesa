@@ -17,7 +17,7 @@ class ChamadoModal extends StatefulWidget {
 
 class _ChamadoModalState extends State<ChamadoModal> {
   final SetChamadoCheckStore store =
-      SetChamadoCheckStore(repossitory: SetChamadoCheckRepository());
+      SetChamadoCheckStore(repository: SetChamadoCheckRepository());
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,9 @@ class _ChamadoModalState extends State<ChamadoModal> {
                 if (store.initialState.value) {
                   return ElevatedButton(
                     onPressed: () {
-                      store.setChamadoCheck(chamadoId: widget.chamado.uid);
+                      store.setChamadoCheck(
+                          chamadoId: widget.chamado.uid,
+                          mesaId: widget.chamado.mesaId);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(16.0),
