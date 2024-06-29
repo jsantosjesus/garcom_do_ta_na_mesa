@@ -5,13 +5,13 @@ class SetChamadoCheckFirestore {
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<bool> setChamadoCheck({required String chamadoId}) async {
-    final data = {"status": 'ATENDIDO'};
+    final statusChamado = {"status": 'ATENDIDO'};
 
     try {
       await db
           .collection("chamado")
           .doc(chamadoId)
-          .set(data, SetOptions(merge: true));
+          .set(statusChamado, SetOptions(merge: true));
 
       return true;
     } catch (e) {

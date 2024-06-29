@@ -56,7 +56,8 @@ class _MesasPageState extends State<MesasPage> {
                     final mesa = store.success.value[id];
                     return GestureDetector(
                       onTap: () {
-                        if (mesa.contaId != null) {
+                        print(mesa.contaId);
+                        if (mesa.contaId != null && mesa.contaId!.isNotEmpty) {
                           final String contaId = mesa.contaId!;
                           context.push(
                               '/conta/$contaId/${mesa.numero}/${mesa.uid}');

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/presenter/store/get_pedidos_store.dart';
-import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/presenter/components/button_set_conta_paga.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/presenter/store/get_pedidos_store.dart';
+import 'package:go_router/go_router.dart';
 
 class ContaPage extends StatefulWidget {
   final String contaId;
@@ -121,21 +122,13 @@ class _ContaPageState extends State<ContaPage> {
               const SizedBox(
                 height: 8,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(16.0),
-                  backgroundColor: primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: const Text(
-                  'Marcar como paga',
-                  style: TextStyle(
-                      color: textColor01, fontWeight: FontWeight.bold),
-                ),
-              ),
+              ButtonSetContaPaga(
+                mesaId: widget.mesaId,
+                contaId: widget.contaId,
+                sair: () {
+                  context.pop();
+                },
+              )
             ],
           )),
     );

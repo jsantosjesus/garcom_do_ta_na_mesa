@@ -1,4 +1,4 @@
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/models/produto_model.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/models/produto_model.dart';
 
 class PedidoModel {
   final List<ProdutoModel> produtos;

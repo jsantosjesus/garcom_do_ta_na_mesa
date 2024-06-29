@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/models/pedido_model.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/repository/get_pedidos_repository.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/models/pedido_model.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/repository/get_pedidos_repository.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 
 class GetPedidosStore {
@@ -28,7 +28,7 @@ class GetPedidosStore {
       // print(total);
 
       totalConta.value = total;
-      print(totalConta.value);
+      // print(totalConta.value);
 
       success.value = result;
     } on DatasourceError catch (e) {

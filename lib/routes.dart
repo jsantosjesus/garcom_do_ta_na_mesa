@@ -1,4 +1,4 @@
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/presenter/conta_page.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/presenter/conta_page.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/home_page.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/login_page.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/splash_page.dart';

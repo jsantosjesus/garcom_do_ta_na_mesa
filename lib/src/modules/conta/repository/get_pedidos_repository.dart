@@ -1,5 +1,5 @@
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/datasource/get_pedidos_firestore.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/conta/get_conta/models/pedido_model.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/datasource/get_pedidos_firestore.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/conta/models/pedido_model.dart';
 
 class GetPedidosRepository {
   final GetPedidosFirestore datasource = GetPedidosFirestore();
