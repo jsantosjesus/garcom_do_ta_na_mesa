@@ -5,6 +5,7 @@ import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/uti
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/presenter/store/set_chamado_check_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/chamados/set_chamado_check/repository/set_chamado_check_repository.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/components_ui_global/snack.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:go_router/go_router.dart';
 
 class ChamadoModal extends StatefulWidget {
@@ -38,7 +39,10 @@ class _ChamadoModalState extends State<ChamadoModal> {
           children: <Widget>[
             Text(
               chamadoTitle,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 20,
+                  fontFamily: fontGlobal),
             ),
             const SizedBox(
               height: 30.0,
@@ -68,11 +72,15 @@ class _ChamadoModalState extends State<ChamadoModal> {
                     child: const Text(
                       'Chamado atendido',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: textColor01),
+                          fontWeight: FontWeight.w700,
+                          color: textColor01,
+                          fontFamily: fontGlobal),
                     ),
                   );
                 } else if (store.isLoading.value) {
-                  return const CircularProgressIndicator();
+                  return const CircularProgressIndicator(
+                    color: primaryColor,
+                  );
                 } else if (store.error.value.isNotEmpty) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showSnackBar(
@@ -82,13 +90,13 @@ class _ChamadoModalState extends State<ChamadoModal> {
                     );
                     // store.error.value = '';
                     // store.initialState.value = true;
-                    Navigator.pop(context);
+                    context.pop();
                   });
 
                   return Container();
                 } else {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Navigator.pop(context);
+                    context.pop();
                   });
                   return Container();
                 }

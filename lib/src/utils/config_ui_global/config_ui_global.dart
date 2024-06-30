@@ -8,5 +8,7 @@ const Color positiveColor = Color(0xFF3520DB);
 
 const Color negativeColor = Color(0xFFDE3737);
 
+const String fontGlobal = 'Montserrat';
+
 //livre : #3520BD
 // ocupada: #DE3737

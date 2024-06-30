@@ -33,7 +33,10 @@ class _MesasPageState extends State<MesasPage> {
         backgroundColor: primaryColor,
         title: const Text(
           'Mesas',
-          style: TextStyle(color: textColor01, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: textColor01,
+              fontWeight: FontWeight.w900,
+              fontFamily: fontGlobal),
         ),
         actions: [
           LogoutComponent(uid: widget.uid),
@@ -45,7 +48,9 @@ class _MesasPageState extends State<MesasPage> {
         builder: ((context, child) {
           if (store.isLoading.value) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: primaryColor,
+              ),
             );
           } else if (store.success.value.isNotEmpty) {
             return Padding(
@@ -56,7 +61,6 @@ class _MesasPageState extends State<MesasPage> {
                     final mesa = store.success.value[id];
                     return GestureDetector(
                       onTap: () {
-                        print(mesa.contaId);
                         if (mesa.contaId != null && mesa.contaId!.isNotEmpty) {
                           final String contaId = mesa.contaId!;
                           context.push(
@@ -80,7 +84,8 @@ class _MesasPageState extends State<MesasPage> {
                           'Mesa ${mesa.numero}',
                           style: const TextStyle(
                               color: textColor01,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: fontGlobal,
                               fontSize: 24),
                         ),
                       ),

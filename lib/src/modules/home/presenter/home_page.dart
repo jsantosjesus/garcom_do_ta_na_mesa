@@ -36,7 +36,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: primaryColor,
         title: const Text(
           'Chamados',
-          style: TextStyle(color: textColor01, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: textColor01,
+              fontWeight: FontWeight.w900,
+              fontFamily: fontGlobal),
         ),
         actions: [
           LogoutComponent(uid: widget.uid),

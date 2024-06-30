@@ -35,7 +35,10 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
             Listenable.merge([store.isLoading, store.success, buildDate.now]),
         builder: ((context, child) {
           if (store.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: CircularProgressIndicator(
+              color: primaryColor,
+            ));
           } else if (store.success.value.isNotEmpty) {
             return ListView.builder(
                 itemCount: store.success.value.length,
@@ -61,8 +64,14 @@ class _ChamadosListviewComponentState extends State<ChamadosListviewComponent> {
                               color: textColor01,
                             ),
                           ),
-                          title: Text(titleChamado),
-                          subtitle: Text(subtitleChamado),
+                          title: Text(
+                            titleChamado,
+                            style: const TextStyle(fontFamily: fontGlobal),
+                          ),
+                          subtitle: Text(
+                            subtitleChamado,
+                            style: const TextStyle(fontFamily: fontGlobal),
+                          ),
                           onTap: () {
                             showModalBottomSheet(
                               context: context,

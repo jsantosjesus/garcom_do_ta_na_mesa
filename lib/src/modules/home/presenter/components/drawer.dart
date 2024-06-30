@@ -38,26 +38,38 @@ class _MyDrawerState extends State<MyDrawer> {
                     );
                   } else if (userStore.error.value.isNotEmpty) {
                     return Center(
-                      child: Text(userStore.error.value),
+                      child: Text(
+                        userStore.error.value,
+                        style: const TextStyle(fontFamily: fontGlobal),
+                      ),
                     );
                   } else {
                     return Text(
                       'Olá ${userStore.success.value.nome}',
-                      style: const TextStyle(color: textColor01, fontSize: 24),
+                      style: const TextStyle(
+                          color: textColor01,
+                          fontSize: 24,
+                          fontFamily: fontGlobal),
                     );
                   }
                 }),
               )),
           ListTile(
             leading: const Icon(Icons.home),
-            title: const Text('Chamados'),
+            title: const Text(
+              'Chamados',
+              style: TextStyle(fontFamily: fontGlobal),
+            ),
             onTap: () {
               context.go('/home/${widget.uid}');
             },
           ),
           ListTile(
             leading: const Icon(Icons.table_bar),
-            title: const Text('Mesas'),
+            title: const Text(
+              'Mesas',
+              style: TextStyle(fontFamily: fontGlobal),
+            ),
             onTap: () {
               context.go('/mesas/${widget.uid}');
             },

@@ -23,7 +23,7 @@ class _LogoutComponentState extends State<LogoutComponent> {
       builder: ((context, child) {
         if (store.isLoading.value) {
           return const CircularProgressIndicator(
-            backgroundColor: textColor01,
+            color: textColor01,
           );
         } else if (!store.isLoggedOut.value) {
           return IconButton(

@@ -88,7 +88,11 @@ class _ButtonSetContaPagaState extends State<ButtonSetContaPaga> {
             ),
             child: const Text(
               'Marcar como paga',
-              style: TextStyle(color: textColor01, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: textColor01,
+                fontWeight: FontWeight.w700,
+                fontFamily: fontGlobal,
+              ),
             ),
           );
         } else if (store.confirm.value) {
@@ -110,9 +114,9 @@ class _ButtonSetContaPagaState extends State<ButtonSetContaPaga> {
                 child: const Text(
                   'Confirmar',
                   style: TextStyle(
-                    color: textColor01,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      color: textColor01,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: fontGlobal),
                 ),
               ),
               const SizedBox(width: 8),
@@ -128,9 +132,9 @@ class _ButtonSetContaPagaState extends State<ButtonSetContaPaga> {
                 child: const Text(
                   'Cancelar',
                   style: TextStyle(
-                    color: negativeColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      color: negativeColor,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: fontGlobal),
                 ),
               ),
             ],
