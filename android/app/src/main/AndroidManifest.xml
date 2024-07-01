@@ -2,7 +2,7 @@
     <application
         android:label="garcom_do_ta_na_mesa"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/ta_na_mesa_logomarca">
         <activity
             android:name=".MainActivity"
             android:exported="true"

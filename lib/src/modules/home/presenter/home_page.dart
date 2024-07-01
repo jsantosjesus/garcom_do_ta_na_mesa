@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     userStore.getUser(uid: widget.uid);
+    userStore.requestPermissionNotification();
   }
 
   @override

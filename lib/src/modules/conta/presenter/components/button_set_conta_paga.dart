@@ -140,7 +140,9 @@ class _ButtonSetContaPagaState extends State<ButtonSetContaPaga> {
             ],
           );
         } else if (store.isLoading.value) {
-          return const CircularProgressIndicator();
+          return const CircularProgressIndicator(
+            color: primaryColor,
+          );
         } else if (store.error.value.isNotEmpty) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             showSnackBar(context: context, mesage: store.error.value);
