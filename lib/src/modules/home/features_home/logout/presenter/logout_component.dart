@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/login_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/logout/presenter/store/logout_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/securit_storage_login.dart';
@@ -18,7 +18,7 @@ class LogoutComponent extends StatefulWidget {
 class _LogoutComponentState extends State<LogoutComponent> {
   final LogoutStore store = LogoutStore(storage: SecuritStorageLogin());
 
-  final SplashStore userUidStore = GetIt.I<SplashStore>();
+  final LoginStore userUidStore = GetIt.I<LoginStore>();
 
   @override
   Widget build(BuildContext context) {

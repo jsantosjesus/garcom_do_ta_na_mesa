@@ -41,7 +41,7 @@ class SetContaPagaStore {
     } on DatasourceError catch (e) {
       error.value = e.message;
     } catch (e) {
-      print(e);
+      // print(e);
       error.value = 'Ops, Aconteceu um erro';
     }
 

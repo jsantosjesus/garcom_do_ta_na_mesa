@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/login_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/get_message_firebase_token.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/contract/storage_login.dart';
 
@@ -12,7 +12,7 @@ class LogoutStore {
   final GetMessageFirebaseToken getMessageFirebaseToken =
       GetMessageFirebaseToken();
 
-  final SplashStore loginStore = GetIt.I<SplashStore>();
+  final LoginStore loginStore = GetIt.I<LoginStore>();
 
   final IStorageLogin storage;
 

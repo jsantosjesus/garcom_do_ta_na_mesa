@@ -15,11 +15,7 @@ class AuthFirebase {
 
       return idUser;
     } on FirebaseAuthException catch (e) {
-      // if (e.code == "invalid-credential") {
-      //   throw null;
-      // } else {
       throw DatasourceError(message: e.code);
-      // }
     }
   }
 }

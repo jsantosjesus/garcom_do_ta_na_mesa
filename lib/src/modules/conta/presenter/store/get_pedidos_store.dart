@@ -34,7 +34,7 @@ class GetPedidosStore {
     } on DatasourceError catch (e) {
       error.value = e.message;
     } catch (e) {
-      print(e);
+      // print(e);
       error.value = 'Erro ao bucar pedidos';
     }
     isLoading.value = false;

@@ -17,7 +17,7 @@ class GetUserFirestore {
         throw DatasourceError(message: 'Usuário não existe');
       }
     } catch (e) {
-      print(e.toString());
+      // print(e.toString());
       throw DatasourceError(message: 'Erro ao fazer requisição');
     }
   }

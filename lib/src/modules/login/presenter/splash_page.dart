@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/login_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +11,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final SplashStore store = GetIt.I<SplashStore>();
+  final LoginStore store = GetIt.I<LoginStore>();
 
   @override
   void initState() {

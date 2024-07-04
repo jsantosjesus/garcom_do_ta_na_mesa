@@ -1,25 +1,28 @@
 import 'package:flutter/foundation.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/services/get_message_firebase_token.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/errors/error_exception.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/repository/auth_repository.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/services/get_message_firebase_token.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/contract/login_params_model.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/contract/storage_login.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/securit_storage_login.dart';
 
-class AuthStore {
+class LoginStore {
   final ValueNotifier<bool> initialState = ValueNotifier<bool>(true);
 
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
-  final ValueNotifier<String> error = ValueNotifier<String>('');
+  final ValueNotifier<bool> error = ValueNotifier<bool>(false);
+
+  final ValueNotifier<String> errorString = ValueNotifier<String>('');
 
   final ValueNotifier<String> success = ValueNotifier<String>('');
+
+  final IStorageLogin storage;
 
   final IAuthRepository repository;
 
   final getMessageFirebaseToken = GetMessageFirebaseToken();
 
-  final IStorageLogin storage = SecuritStorageLogin();
+  LoginStore({required this.storage, required this.repository});
 
   bool isValidEmail(String email) {
     final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
@@ -32,14 +35,36 @@ class AuthStore {
     return passwordRegex.hasMatch(password);
   }
 
-  AuthStore({required this.repository});
+  Future autoLogin() async {
+    isLoading.value = true;
+    initialState.value = false;
+    try {
+      final LoginParamsModel loginStorage = await storage.getEmailAndPassword();
+
+      try {
+        final result = await repository.auth(
+            email: loginStorage.email, password: loginStorage.password);
+
+        success.value = result;
+      } on DatasourceError catch (e) {
+        print(e.message);
+        error.value = true;
+      } catch (e) {
+        error.value = true;
+      }
+    } catch (e) {
+      error.value = true;
+    }
+
+    isLoading.value = false;
+  }
 
   Future login({required String email, required String password}) async {
     initialState.value = false;
     if (!isValidEmail(email)) {
-      error.value = 'Email inválido';
+      errorString.value = 'Email inválido';
     } else if (!isValidPassword(password)) {
-      error.value = 'Senha inválida';
+      errorString.value = 'Senha inválida';
     } else {
       isLoading.value = true;
 
@@ -54,14 +79,14 @@ class AuthStore {
         success.value = result;
       } on DatasourceError catch (e) {
         if (e.message == 'invalid-credential') {
-          error.value = 'email ou senha inválidos';
+          errorString.value = 'email ou senha inválidos';
         } else {
-          print(e.message);
-          error.value = 'Ops, aconteceu um erro';
+          // print(e.message);
+          errorString.value = 'Ops, aconteceu um erro';
         }
       } catch (e) {
-        print(e.toString());
-        error.value = 'Ops, aconteceu um erro';
+        // print(e.toString());
+        errorString.value = 'Ops, aconteceu um erro';
       }
 
       isLoading.value = false;

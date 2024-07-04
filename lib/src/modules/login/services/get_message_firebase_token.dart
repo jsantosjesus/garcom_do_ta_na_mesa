@@ -15,7 +15,7 @@ class GetMessageFirebaseToken {
           .doc(uid)
           .set(data, SetOptions(merge: true));
     } else {
-      print('Erro ao buscar o token');
+      // print('Erro ao buscar o token');
     }
   }
 
