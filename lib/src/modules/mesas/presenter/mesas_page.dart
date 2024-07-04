@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/features_home/logout/presenter/logout_component.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/home/presenter/components/drawer.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/mesas/presenter/store/get_mesas_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/components_ui_global/snack.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class MesasPage extends StatefulWidget {
-  final String uid;
-  const MesasPage({super.key, required this.uid});
+  const MesasPage({super.key});
 
   @override
   State<MesasPage> createState() => _MesasPageState();
@@ -17,11 +18,13 @@ class MesasPage extends StatefulWidget {
 class _MesasPageState extends State<MesasPage> {
   final GetMesasStore store = GetMesasStore();
 
+  final SplashStore userUidStore = GetIt.I<SplashStore>();
+
   @override
   void initState() {
     super.initState();
 
-    store.listenToMesas(garcomId: widget.uid);
+    store.listenToMesas(garcomId: userUidStore.success.value);
   }
 
   @override
@@ -38,11 +41,11 @@ class _MesasPageState extends State<MesasPage> {
               fontWeight: FontWeight.w900,
               fontFamily: fontGlobal),
         ),
-        actions: [
-          LogoutComponent(uid: widget.uid),
+        actions: const [
+          LogoutComponent(),
         ],
       ),
-      drawer: MyDrawer(uid: widget.uid),
+      drawer: const MyDrawer(),
       body: AnimatedBuilder(
         animation: Listenable.merge([store.isLoading, store.success]),
         builder: ((context, child) {

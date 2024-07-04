@@ -59,6 +59,7 @@ class _ChamadoModalState extends State<ChamadoModal> {
                   return ElevatedButton(
                     onPressed: () {
                       store.setChamadoCheck(
+                          tipo: widget.chamado.tipo,
                           chamadoId: widget.chamado.uid,
                           mesaId: widget.chamado.mesaId);
                     },

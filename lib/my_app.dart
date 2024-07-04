@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   initializeFirebaseMessaging() async {
-    await _firebaseMessagingService.initilize();
+    await _firebaseMessagingService.initialize();
   }
 
   checkNotifications() async {

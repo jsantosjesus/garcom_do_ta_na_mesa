@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/components/login_component.dart';
+import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/components_ui_global/snack.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/repository/auth_repository.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/auth_store.dart';
 import 'package:garcom_do_ta_na_mesa/src/utils/config_ui_global/config_ui_global.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,7 +14,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final AuthStore store = AuthStore(repository: AuthRepositoryImpl());
+  final SplashStore store = GetIt.I<SplashStore>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    store.initialState.value = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +49,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             );
-          } else if (store.error.value.isNotEmpty) {
+          } else if (store.errorString.value.isNotEmpty) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               showSnackBar(
                 context: context,
-                mesage: store.error.value,
+                mesage: store.errorString.value,
                 isError: true,
               );
-              store.error.value = '';
+              store.errorString.value = '';
               store.initialState.value = true;
             });
 
             return Container();
           } else {
-            final uid = store.success.value;
+            // final uid = store.success.value;
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.go('/home/$uid');
+              context.go('/home');
             });
 
             return Container();

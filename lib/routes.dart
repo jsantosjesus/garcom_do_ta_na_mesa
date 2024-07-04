@@ -15,16 +15,12 @@ final routes = GoRouter(routes: [
     builder: (context, state) => const LoginPage(),
   ),
   GoRoute(
-    path: '/home/:uid',
-    builder: (context, state) => HomePage(
-      uid: state.pathParameters['uid']!,
-    ),
+    path: '/home',
+    builder: (context, state) => const HomePage(),
   ),
   GoRoute(
-    path: '/mesas/:uid',
-    builder: (context, state) => MesasPage(
-      uid: state.pathParameters['uid']!,
-    ),
+    path: '/mesas',
+    builder: (context, state) => const MesasPage(),
   ),
   GoRoute(
     path: '/conta/:contaId/:mesaNumero/:mesaId',

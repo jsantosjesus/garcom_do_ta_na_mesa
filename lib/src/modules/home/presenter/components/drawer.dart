@@ -5,8 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class MyDrawer extends StatefulWidget {
-  final String uid;
-  const MyDrawer({super.key, required this.uid});
+  const MyDrawer({super.key});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -61,7 +60,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(fontFamily: fontGlobal),
             ),
             onTap: () {
-              context.go('/home/${widget.uid}');
+              context.go('/home');
             },
           ),
           ListTile(
@@ -71,7 +70,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(fontFamily: fontGlobal),
             ),
             onTap: () {
-              context.go('/mesas/${widget.uid}');
+              context.go('/mesas');
             },
           ),
         ],

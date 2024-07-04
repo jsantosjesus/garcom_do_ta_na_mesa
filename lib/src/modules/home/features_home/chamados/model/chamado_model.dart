@@ -20,11 +20,11 @@ class ChamadoModel {
       {required Map<String, dynamic> map, required String id}) {
     final Timestamp timestampHora = map['hora'];
     final Map<String, dynamic> mesa = map['mesa'];
-    final DateTime horaAjustada =
-        timestampHora.toDate().subtract(const Duration(hours: 3));
+    // final DateTime horaAjustada =
+    //     timestampHora.toDate().subtract(const Duration(hours: 3));
     return ChamadoModel(
       uid: id,
-      hora: horaAjustada,
+      hora: timestampHora.toDate(),
       mesaId: mesa['id'],
       numeroMesa: mesa['numero'] as int,
       tipo: map['tipo'] as String,

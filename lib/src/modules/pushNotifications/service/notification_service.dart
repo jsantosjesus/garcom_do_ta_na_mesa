@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:garcom_do_ta_na_mesa/routes.dart';
 
 class CustomNotification {
   final int id;
@@ -31,15 +32,21 @@ class NotificationService {
 
     var initializationSettings = InitializationSettings(
         android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+
     await notificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse:
-            (NotificationResponse notificationResponse) async {});
+            (NotificationResponse notificationResponse) async {
+      routes.go('/home');
+    });
   }
 
   notificationDetails() {
     return const NotificationDetails(
         android: AndroidNotificationDetails('canal_chamados_id', 'Chamados',
-            importance: Importance.max, priority: Priority.max),
+            importance: Importance.max,
+            priority: Priority.max,
+            ticker: 'ticker',
+            fullScreenIntent: true),
         iOS: DarwinNotificationDetails());
   }
 

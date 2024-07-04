@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/repository/auth_repository.dart';
-import 'package:garcom_do_ta_na_mesa/src/modules/login/services/storage_login/securit_storage_login.dart';
 import 'package:garcom_do_ta_na_mesa/src/modules/login/presenter/store/splash_store.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-// import 'package:garcom_do_ta_na_mesa/src/features/login/services/prefs_service.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,8 +11,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final SplashStore store = SplashStore(
-      storage: SecuritStorageLogin(), repository: AuthRepositoryImpl());
+  final SplashStore store = GetIt.I<SplashStore>();
 
   @override
   void initState() {
@@ -37,14 +34,13 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _navigate() {
-    if (!store.isLoading.value) {
+    if (!store.isLoading.value & !store.initialState.value) {
       WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
         if (mounted) {
-          if (store.error.value) {
-            context.go('/login');
+          if (store.success.value.isNotEmpty) {
+            context.go('/home');
           } else {
-            final uid = store.success.value;
-            context.go('/home/$uid');
+            context.go('/login');
           }
         }
       });
@@ -53,11 +49,6 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    // return AnimatedBuilder(
-    //   animation:
-    //       Listenable.merge([store.isLoading, store.error, store.success]),
-    //   builder: ((context, child) {
-    //     if (store.isLoading.value) {
     return Container(
       color: const Color(0xFFFF881F),
       child: const Center(
@@ -66,10 +57,5 @@ class _SplashPageState extends State<SplashPage> {
         ),
       ),
     );
-    //     } else {
-    //       return Container();
-    //     }
-    //   }),
-    // );
   }
 }

@@ -16,13 +16,15 @@ class SetChamadoCheckStore {
   SetChamadoCheckStore({required this.repository});
 
   Future setChamadoCheck(
-      {required String chamadoId, required String mesaId}) async {
+      {required String chamadoId,
+      required String mesaId,
+      required String tipo}) async {
     initialState.value = false;
     isLoading.value = true;
 
     try {
       final result = await repository.setChamadoCheck(
-          chamadoId: chamadoId, mesaId: mesaId);
+          chamadoId: chamadoId, mesaId: mesaId, tipo: tipo);
 
       success.value = result;
     } on DatasourceError catch (e) {
