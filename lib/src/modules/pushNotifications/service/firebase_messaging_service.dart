@@ -21,11 +21,11 @@ class FirebaseMessagingService {
   void _configureFirebaseMessaging() {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
+      // AndroidNotification? android = message.notification?.android;
 
-      if (notification != null && android != null) {
+      if (notification != null) {
         _notificationService.showNotification(CustomNotification(
-          id: android.hashCode,
+          id: message.messageId.hashCode,
           title: notification.title!,
           body: notification.body!,
         ));
