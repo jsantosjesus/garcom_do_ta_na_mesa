@@ -5,6 +5,8 @@ String buildTitle({required String tipo, required int mesa}) {
     return 'O pedido da mesa $mesa está pronto';
   } else if (tipo == 'conta') {
     return 'Mesa $mesa precisa da conta';
+  } else if (tipo == 'pedidoCancelado') {
+    return 'O pedido da mesa $mesa foi cancelado';
   } else {
     return '';
   }

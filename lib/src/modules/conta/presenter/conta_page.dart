@@ -54,6 +54,7 @@ class _ContaPageState extends State<ContaPage> {
             );
           } else {
             return ListView.builder(
+              padding: const EdgeInsets.only(bottom: 120),
               itemCount: store.success.value.length,
               itemBuilder: (context, id) {
                 final pedido = store.success.value[id];

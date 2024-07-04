@@ -7,8 +7,10 @@ class GetPedidosFirestore {
 
   Future<List<ResponseModelFiresore>> getPedidos(
       {required String contaId}) async {
-    final docRef =
-        db.collection('pedido').where('conta_id', isEqualTo: contaId);
+    final docRef = db
+        .collection('pedido')
+        .where('conta_id', isEqualTo: contaId)
+        .where('status', isEqualTo: 'pronto');
 
     return docRef.get().then((snapshot) {
       return snapshot.docs
