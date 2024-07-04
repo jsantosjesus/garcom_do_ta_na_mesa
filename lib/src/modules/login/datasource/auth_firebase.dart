@@ -18,4 +18,8 @@ class AuthFirebase {
       throw DatasourceError(message: e.code);
     }
   }
+
+  Future<void> logoutUsuario() {
+    return _firebaseAuth.signOut();
+  }
 }

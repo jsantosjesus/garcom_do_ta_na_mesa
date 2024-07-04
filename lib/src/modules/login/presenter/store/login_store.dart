@@ -46,8 +46,8 @@ class LoginStore {
             email: loginStorage.email, password: loginStorage.password);
 
         success.value = result;
+        // ignore: unused_catch_clause
       } on DatasourceError catch (e) {
-        print(e.message);
         error.value = true;
       } catch (e) {
         error.value = true;
