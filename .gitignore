@@ -41,3 +41,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# plubish release android
+/android/app/release-key.jks
+/android/key.properties
